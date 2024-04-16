@@ -1,0 +1,23 @@
+<table class="work-order-table">
+    <thead>
+      <tr>
+        <th>Fecha y Hora</th>
+        <th>DNI del Cliente</th>
+        <th>Patente del Auto</th>
+        <th>Servicios</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let order of orders">
+        <td>{{ order.localDateTime | date: 'dd/MM/yyyy HH:mm:ss' }}</td>
+        <td>{{ order.clientDni }}</td>
+        <td>{{ order.car.patent }}</td>
+        <td>
+          <ul>
+            <li *ngFor="let service of order.serviceList">{{ service.serviceType }}</li>
+          </ul>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  

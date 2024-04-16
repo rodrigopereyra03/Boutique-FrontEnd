@@ -1,0 +1,28 @@
+<form (ngSubmit)="onSubmit()" class="form-container">
+  
+  <div>
+    <label for="localDateTime">Fecha y Hora:</label>
+    <select id="localDateTime" name="localDateTime" [(ngModel)]="selectedDateTime" required>
+      <option *ngFor="let dateTime of dateTimeOptions" [value]="formatLocalDateTime(dateTime)">{{ dateTime | date:'medium' }}</option>
+    </select>
+  </div>
+
+    <div>
+      <label for="clientDni">DNI del Cliente:</label>
+      <input type="number" id="clientDni" name="clientDni" [(ngModel)]="workOrder.clientDni" required>
+    </div>
+  
+    <div>
+      <label for="car">Patente:</label>
+      <input type="text" id="car" name="car" [(ngModel)]="workOrder.car.patent" required>
+    </div>
+
+    <div class="select-container">
+      <select [(ngModel)]="services" name="services" multiple class="custom-select">
+        <option *ngFor="let opcion of listService" [value]="opcion" class="custom-option">{{ opcion.serviceType }}</option>
+      </select>
+    </div>
+
+
+    <button type="submit">Enviar</button>
+  </form>
